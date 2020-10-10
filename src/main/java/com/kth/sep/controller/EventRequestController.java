@@ -2,13 +2,14 @@ package com.kth.sep.controller;
 
 
 import com.kth.sep.entity.EventPlanningRequest;
+import com.kth.sep.exception.EventPlanningRequestNotFoundException;
 import com.kth.sep.service.EventPlanningService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/event_request/v1/")
+@RequestMapping("/event_request/")
 public class EventRequestController {
 
 private final EventPlanningService eventPlanningService;
@@ -25,22 +26,22 @@ private final EventPlanningService eventPlanningService;
     }
 
     @PutMapping("scso_approve/{id}")
-    public EventPlanningRequest scsoApproveEventPlanningRequest(@RequestParam Integer id) {
+    public EventPlanningRequest scsoApproveEventPlanningRequest(@RequestParam Integer id) throws EventPlanningRequestNotFoundException {
         return eventPlanningService.scsoApprove(id);
     }
 
     @PutMapping("financial_manager_approve")
-    public EventPlanningRequest financialManagerAction(@RequestParam(value = "id") Integer id, @RequestParam(value = "feedback") String feedback) {
+    public EventPlanningRequest financialManagerAction(@RequestParam(value = "id") Integer id, @RequestParam(value = "feedback") String feedback) throws EventPlanningRequestNotFoundException {
         return eventPlanningService.financialManagerAction(id, feedback);
     }
 
     @PutMapping("admin_approve}")
-    public EventPlanningRequest adminApprove(@RequestParam(value = "id") Integer id) {
+    public EventPlanningRequest adminApprove(@RequestParam(value = "id") Integer id) throws EventPlanningRequestNotFoundException {
         return eventPlanningService.adminApprove(id);
     }
 
     @GetMapping("get_all")
-    public List<EventPlanningRequest> getAllEventPLanningRequests(){
+    public List<EventPlanningRequest> getAllEventPlanningRequests(){
         return eventPlanningService.getAllEventPlanningRequests();
     }
 }

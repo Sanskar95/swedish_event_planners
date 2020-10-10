@@ -2,6 +2,7 @@ package com.kth.sep.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.kth.sep.entity.reply.Response;
 import com.kth.sep.model.RequestingDepartment;
 
 import javax.persistence.*;
@@ -22,6 +23,10 @@ public class RecruitmentRequest {
     private String jobTitle;
     private String status;
     private String jobDescription;
+
+    @OneToOne
+    @JoinColumn(name="id")
+    private Response response;
 
     public String getContractType() {
         return contractType;
@@ -69,5 +74,21 @@ public class RecruitmentRequest {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Response getResponse() {
+        return response;
+    }
+
+    public void setResponse(Response response) {
+        this.response = response;
     }
 }

@@ -1,6 +1,7 @@
 package com.kth.sep.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.kth.sep.entity.reply.Response;
 import com.kth.sep.model.RequestingDepartment;
 
 import javax.persistence.*;
@@ -19,6 +20,13 @@ public class FinancialRequest {
     private Double requestedAmount;
     private Double agreedAmount;
 
+    public FinancialRequest(Double agreedAmount) {
+        this.agreedAmount = agreedAmount;
+    }
+
+    @OneToOne
+    @JoinColumn(name="id")
+    private Response response;
 
     private String reason;
 
@@ -52,5 +60,21 @@ public class FinancialRequest {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public Double getAgreedAmount() {
+        return agreedAmount;
+    }
+
+    public void setAgreedAmount(Double agreedAmount) {
+        this.agreedAmount = agreedAmount;
+    }
+
+    public Response getResponse() {
+        return response;
+    }
+
+    public void setResponse(Response response) {
+        this.response = response;
     }
 }

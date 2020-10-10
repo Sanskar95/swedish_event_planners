@@ -1,6 +1,7 @@
 package com.kth.sep.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.kth.sep.entity.reply.Response;
 import com.kth.sep.model.Status;
 
 import javax.persistence.*;
@@ -21,11 +22,12 @@ public class SubteamTask {
     private String departmemt;
     private Status status;
     private String priority;
-    private SubteamResponse subteamResponse;
 
-    public SubteamTask() {
-        this.subteamResponse = null;
-    }
+    @OneToOne
+    @JoinColumn(name="id")
+    private Response response;
+
+
 
     public Integer getId() {
         return id;
@@ -73,6 +75,14 @@ public class SubteamTask {
 
     public void setDepartmemt(String departmemt) {
         this.departmemt = departmemt;
+    }
+
+    public Response getResponse() {
+        return response;
+    }
+
+    public void setResponse(Response response) {
+        this.response = response;
     }
 }
 

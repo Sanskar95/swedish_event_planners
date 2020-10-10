@@ -33,15 +33,15 @@ public class EventPlanningService {
         return eventPlaningRequestRepository.save(eventPlanningRequest);
     }
 
-    public EventPlanningRequest scsoApprove(Integer id) {
+    public EventPlanningRequest scsoApprove(Integer id) throws EventPlanningRequestNotFoundException {
         EventPlanningRequest eventPlanningRequest = eventPlaningRequestRepository.findById(id).orElseThrow(() -> new EventPlanningRequestNotFoundException("The event has been removed"));
-        eventPlanningRequest.setApprovedBySeniorCustomerServiceOfficer(true);
+        eventPlanningRequest.setApprovedBySeniorCustomerServiceOfficer(!eventPlanningRequest.getApprovedBySeniorCustomerServiceOfficer());
         return eventPlaningRequestRepository.save(eventPlanningRequest);
         //TODO: include false case as well
 
     }
 
-    public EventPlanningRequest financialManagerAction(Integer id, String feedback) {
+    public EventPlanningRequest financialManagerAction(Integer id, String feedback) throws EventPlanningRequestNotFoundException {
         EventPlanningRequest eventPlanningRequest = eventPlaningRequestRepository.findById(id).orElseThrow(() -> new EventPlanningRequestNotFoundException("The event has been removed"));
         eventPlanningRequest.setApprovedByFinancialManager(true);
         eventPlanningRequest.setFinancialManagerFeedback(feedback);
@@ -49,9 +49,9 @@ public class EventPlanningService {
     }
 
 
-    public EventPlanningRequest adminApprove(Integer id) {
+    public EventPlanningRequest adminApprove(Integer id) throws EventPlanningRequestNotFoundException {
         EventPlanningRequest eventPlanningRequest = eventPlaningRequestRepository.findById(id).orElseThrow(() -> new EventPlanningRequestNotFoundException("The event has been removed"));
-        eventPlanningRequest.setApprovedBySeniorCustomerServiceOfficer(true);
+        eventPlanningRequest.setApprovedBySeniorCustomerServiceOfficer(!eventPlanningRequest.getApprovedBySeniorCustomerServiceOfficer());
         return eventPlaningRequestRepository.save(eventPlanningRequest);
     }
 }
