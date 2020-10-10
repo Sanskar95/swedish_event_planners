@@ -2,26 +2,26 @@ package com.kth.sep.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kth.sep.entity.reply.Response;
-import com.kth.sep.model.RequestingDepartment;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "financial_request")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class FinancialRequest {
+public class FinancialRequest implements Serializable {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private RequestingDepartment requestingDepartment;
+    private String requestingDepartment;
     private Double requestedAmount;
     private Double agreedAmount;
 
-    public FinancialRequest(Double agreedAmount) {
-        this.agreedAmount = agreedAmount;
+    public FinancialRequest() {
+        this.agreedAmount = this.requestedAmount;
     }
 
     @OneToOne
@@ -38,11 +38,11 @@ public class FinancialRequest {
         this.id = id;
     }
 
-    public RequestingDepartment getRequestingDepartment() {
+    public String getRequestingDepartment() {
         return requestingDepartment;
     }
 
-    public void setRequestingDepartment(RequestingDepartment requestingDepartment) {
+    public void setRequestingDepartment(String requestingDepartment) {
         this.requestingDepartment = requestingDepartment;
     }
 
@@ -77,4 +77,5 @@ public class FinancialRequest {
     public void setResponse(Response response) {
         this.response = response;
     }
+
 }

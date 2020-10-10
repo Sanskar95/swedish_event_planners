@@ -8,5 +8,4 @@ import java.util.Optional;
 
 public interface RecruitmentRequestRepository extends JpaRepository<RecruitmentRequest, Integer> {
     Optional<RecruitmentRequest> findById(Integer id);
-
 }
