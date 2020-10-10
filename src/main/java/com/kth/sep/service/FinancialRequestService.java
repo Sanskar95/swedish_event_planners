@@ -35,5 +35,9 @@ public class FinancialRequestService {
         financialRequestRepository.save(financialRequest);
         return financialRequest;
     }
+
+    public FinancialRequest createFinancialRequest(FinancialRequest financialRequest) {
+       return financialRequestRepository.save(financialRequest);
+    }
 }
 

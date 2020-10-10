@@ -1,6 +1,7 @@
 package com.kth.sep.controller;
 
 
+import com.kth.sep.entity.FinancialRequest;
 import com.kth.sep.entity.RecruitmentRequest;
 import com.kth.sep.entity.reply.Response;
 import com.kth.sep.exception.FinancialRequestNotFoundException;
@@ -21,12 +22,17 @@ public class RecruitmentRequestController {
     }
 
     @GetMapping("get_all")
-    public List<RecruitmentRequest> getAllFinancialRequests(){
+    public List<RecruitmentRequest> getAllRecruitmentRequests(){
         return recruitmentRequestService.getAllRecruitmentRequests();
     }
 
     @PutMapping("modify")
     public RecruitmentRequest respondToRecruitmentRequest(@RequestParam(value = "id") Integer id, @RequestParam(value = "status") String status, @RequestBody Response response) throws FinancialRequestNotFoundException, RecruitmentRequetNotFoundException {
         return  recruitmentRequestService.modifyRecruitmentRequest(id , response, status);
+    }
+
+    @PostMapping("create")
+    public RecruitmentRequest createRecruitmentRequest(@RequestBody RecruitmentRequest recruitmentRequest){
+        return   recruitmentRequestService.createRecruitmentRequest(recruitmentRequest);
     }
 }

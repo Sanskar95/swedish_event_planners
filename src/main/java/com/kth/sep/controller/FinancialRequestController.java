@@ -28,4 +28,9 @@ public class FinancialRequestController {
     public FinancialRequest respondToFinancialRequest(@RequestParam(value = "id") Integer id, @RequestParam(value = "agreedAmount") Double agreedAmount, @RequestBody Response response) throws FinancialRequestNotFoundException {
         return  financialRequestService.modifyFinancialRequest(id , agreedAmount, response);
     }
+
+    @PostMapping("create")
+    public FinancialRequest createFinancialRequest( @RequestBody FinancialRequest financialRequest){
+      return   financialRequestService.createFinancialRequest(financialRequest);
+    }
 }

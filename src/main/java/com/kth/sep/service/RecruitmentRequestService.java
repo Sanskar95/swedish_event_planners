@@ -35,4 +35,8 @@ public class RecruitmentRequestService {
         return recruitmentRequest;
 
     }
+
+    public RecruitmentRequest createRecruitmentRequest(RecruitmentRequest recruitmentRequest) {
+        return recruitmentRequestRepository.save(recruitmentRequest);
+    }
 }

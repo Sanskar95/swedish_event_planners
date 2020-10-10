@@ -36,4 +36,8 @@ public class SubteamTaskService {
         subteamTask.setResponse(response);
         return subteamTask;
     }
+
+    public SubteamTask createSubteamTask(SubteamTask subteamTask) {
+        return subteamTaskRepository.save(subteamTask);
+    }
 }

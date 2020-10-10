@@ -1,5 +1,6 @@
 package com.kth.sep.controller;
 
+import com.kth.sep.entity.FinancialRequest;
 import com.kth.sep.entity.SubteamTask;
 import com.kth.sep.entity.reply.Response;
 import com.kth.sep.exception.FinancialRequestNotFoundException;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/recruitment_request/")
+@RequestMapping("/subteam_task/")
 public class SubteamTaskController {
 
     private final SubteamTaskService subteamTaskService;
@@ -29,5 +30,10 @@ public class SubteamTaskController {
     @PutMapping("modify")
     public SubteamTask respondToSubteamTask(@RequestParam(value = "id") Integer id, @RequestParam(value = "status") String status, @RequestBody Response response) throws FinancialRequestNotFoundException, RecruitmentRequetNotFoundException, SubteamTaskNotFoundException {
         return  subteamTaskService.modifySubteamTask(id , status, response);
+    }
+
+    @PostMapping("create")
+    public SubteamTask createSubteamTask(@RequestBody SubteamTask subteamTask){
+        return   subteamTaskService.createSubteamTask(subteamTask);
     }
 }
