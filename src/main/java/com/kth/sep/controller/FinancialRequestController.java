@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/financial_request/")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FinancialRequestController {
 
     private final FinancialRequestService financialRequestService;

@@ -2,6 +2,7 @@ package com.kth.sep.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kth.sep.entity.reply.Response;
+import com.kth.sep.model.RequestingDepartment;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,9 +17,10 @@ public class FinancialRequest implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String requestingDepartment;
+    private RequestingDepartment requestingDepartment;
     private Double requestedAmount;
     private Double agreedAmount;
+    private String projectReference;
 
     public FinancialRequest() {
         this.agreedAmount = this.requestedAmount;
@@ -38,11 +40,11 @@ public class FinancialRequest implements Serializable {
         this.id = id;
     }
 
-    public String getRequestingDepartment() {
+    public RequestingDepartment getRequestingDepartment() {
         return requestingDepartment;
     }
 
-    public void setRequestingDepartment(String requestingDepartment) {
+    public void setRequestingDepartment(RequestingDepartment requestingDepartment) {
         this.requestingDepartment = requestingDepartment;
     }
 
@@ -78,4 +80,11 @@ public class FinancialRequest implements Serializable {
         this.response = response;
     }
 
+    public String getProjectReference() {
+        return projectReference;
+    }
+
+    public void setProjectReference(String projectReference) {
+        this.projectReference = projectReference;
+    }
 }
