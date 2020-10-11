@@ -13,6 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/recruitment_request/")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 public class RecruitmentRequestController {
 
     private final RecruitmentRequestService recruitmentRequestService;

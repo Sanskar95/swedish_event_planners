@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/subteam_task/")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SubteamTaskController {
 
     private final SubteamTaskService subteamTaskService;
