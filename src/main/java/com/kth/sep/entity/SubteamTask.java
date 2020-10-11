@@ -2,7 +2,9 @@ package com.kth.sep.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kth.sep.entity.reply.Response;
+import com.kth.sep.model.Priority;
 import com.kth.sep.model.Status;
+import com.kth.sep.model.SubteamDepartment;
 
 import javax.persistence.*;
 
@@ -19,9 +21,10 @@ public class SubteamTask {
 
     private String subteamContactName;
     private String description;
-    private String departmemt;
+    private SubteamDepartment departmemt;
     private Status status;
-    private String priority;
+    private Priority priority;
+    private String projectReference;
 
     @OneToOne
     @JoinColumn(name="id")
@@ -61,19 +64,19 @@ public class SubteamTask {
         this.status = status;
     }
 
-    public String getPriority() {
+    public Priority getPriority() {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(Priority priority) {
         this.priority = priority;
     }
 
-    public String getDepartmemt() {
+    public SubteamDepartment getDepartmemt() {
         return departmemt;
     }
 
-    public void setDepartmemt(String departmemt) {
+    public void setDepartmemt(SubteamDepartment departmemt) {
         this.departmemt = departmemt;
     }
 
@@ -83,6 +86,14 @@ public class SubteamTask {
 
     public void setResponse(Response response) {
         this.response = response;
+    }
+
+    public String getProjectReference() {
+        return projectReference;
+    }
+
+    public void setProjectReference(String projectReference) {
+        this.projectReference = projectReference;
     }
 }
 
