@@ -54,4 +54,10 @@ public class EventPlanningService {
         eventPlanningRequest.setApprovedBySeniorCustomerServiceOfficer(!eventPlanningRequest.getApprovedBySeniorCustomerServiceOfficer());
         return eventPlaningRequestRepository.save(eventPlanningRequest);
     }
+
+    public EventPlanningRequest finalScsoApprove(Integer id) throws EventPlanningRequestNotFoundException {
+        EventPlanningRequest eventPlanningRequest = eventPlaningRequestRepository.findById(id).orElseThrow(() -> new EventPlanningRequestNotFoundException("The event has been removed"));
+        eventPlanningRequest.setFinalScsoApproval(!eventPlanningRequest.getFinalScsoApproval());
+        return eventPlaningRequestRepository.save(eventPlanningRequest);
+    }
 }

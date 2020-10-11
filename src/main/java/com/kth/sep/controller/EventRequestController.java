@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/event_request/")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class EventRequestController {
 
 private final EventPlanningService eventPlanningService;
@@ -25,7 +26,7 @@ private final EventPlanningService eventPlanningService;
 
     }
 
-    @PutMapping("scso_approve/{id}")
+    @PutMapping("scso_approve")
     public EventPlanningRequest scsoApproveEventPlanningRequest(@RequestParam Integer id) throws EventPlanningRequestNotFoundException {
         return eventPlanningService.scsoApprove(id);
     }
@@ -38,6 +39,11 @@ private final EventPlanningService eventPlanningService;
     @PutMapping("admin_approve}")
     public EventPlanningRequest adminApprove(@RequestParam(value = "id") Integer id) throws EventPlanningRequestNotFoundException {
         return eventPlanningService.adminApprove(id);
+    }
+
+    @PutMapping("final_scso_approve}")
+    public EventPlanningRequest finalScsoApprove(@RequestParam(value = "id") Integer id) throws EventPlanningRequestNotFoundException {
+        return eventPlanningService.finalScsoApprove(id);
     }
 
     @GetMapping("get_all")

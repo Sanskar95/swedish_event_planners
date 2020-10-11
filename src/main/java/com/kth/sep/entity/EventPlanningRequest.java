@@ -32,6 +32,7 @@ public class EventPlanningRequest {
     private Boolean approvedBySeniorCustomerServiceOfficer;
     private Boolean approvedByFinancialManager;
     private Boolean approvedByAdminManager;
+    private Boolean finalScsoApproval;
 
     private String financialManagerFeedback;
 
@@ -39,6 +40,7 @@ public class EventPlanningRequest {
         this.approvedBySeniorCustomerServiceOfficer = false;
         this.approvedByFinancialManager = false;
         this.approvedByAdminManager = false;
+        this.finalScsoApproval= false;
     }
 
     public String getEventName() {
@@ -143,5 +145,13 @@ public class EventPlanningRequest {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getFinalScsoApproval() {
+        return finalScsoApproval;
+    }
+
+    public void setFinalScsoApproval(Boolean finalScsoApproval) {
+        this.finalScsoApproval = finalScsoApproval;
     }
 }
