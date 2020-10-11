@@ -51,7 +51,7 @@ public class EventPlanningService {
 
     public EventPlanningRequest adminApprove(Integer id) throws EventPlanningRequestNotFoundException {
         EventPlanningRequest eventPlanningRequest = eventPlaningRequestRepository.findById(id).orElseThrow(() -> new EventPlanningRequestNotFoundException("The event has been removed"));
-        eventPlanningRequest.setApprovedBySeniorCustomerServiceOfficer(!eventPlanningRequest.getApprovedBySeniorCustomerServiceOfficer());
+        eventPlanningRequest.setApprovedByAdminManager(!eventPlanningRequest.getApprovedByAdminManager());
         return eventPlaningRequestRepository.save(eventPlanningRequest);
     }
 

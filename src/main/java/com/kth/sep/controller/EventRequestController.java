@@ -36,12 +36,12 @@ private final EventPlanningService eventPlanningService;
         return eventPlanningService.financialManagerAction(id, feedback);
     }
 
-    @PutMapping("admin_approve}")
+    @PutMapping("admin_approve")
     public EventPlanningRequest adminApprove(@RequestParam(value = "id") Integer id) throws EventPlanningRequestNotFoundException {
         return eventPlanningService.adminApprove(id);
     }
 
-    @PutMapping("final_scso_approve}")
+    @PutMapping("final_scso_approve")
     public EventPlanningRequest finalScsoApprove(@RequestParam(value = "id") Integer id) throws EventPlanningRequestNotFoundException {
         return eventPlanningService.finalScsoApprove(id);
     }
