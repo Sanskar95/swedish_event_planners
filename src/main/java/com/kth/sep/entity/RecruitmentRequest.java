@@ -4,6 +4,7 @@ package com.kth.sep.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kth.sep.entity.reply.Response;
 import com.kth.sep.model.RequestingDepartment;
+import com.kth.sep.model.Status;
 
 import javax.persistence.*;
 
@@ -21,7 +22,7 @@ public class RecruitmentRequest {
     private RequestingDepartment requestingDepartment;
     private Double yearsOfExperience;
     private String jobTitle;
-    private String status;
+    private Status status;
     private String jobDescription;
 
     @OneToOne
@@ -76,11 +77,11 @@ public class RecruitmentRequest {
         this.id = id;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

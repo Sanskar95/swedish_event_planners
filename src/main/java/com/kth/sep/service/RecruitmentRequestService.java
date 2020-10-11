@@ -4,6 +4,7 @@ package com.kth.sep.service;
 import com.kth.sep.entity.RecruitmentRequest;
 import com.kth.sep.entity.reply.Response;
 import com.kth.sep.exception.RecruitmentRequetNotFoundException;
+import com.kth.sep.model.Status;
 import com.kth.sep.repository.RecruitmentRequestRepository;
 import com.kth.sep.repository.ResponseRepository;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class RecruitmentRequestService {
 
     public RecruitmentRequest modifyRecruitmentRequest(Integer id, Response response, String status) throws RecruitmentRequetNotFoundException {
         RecruitmentRequest recruitmentRequest = recruitmentRequestRepository.findById(id).orElseThrow(() -> new RecruitmentRequetNotFoundException("The request does not exist"));
-        recruitmentRequest.setStatus(status);
+        recruitmentRequest.setStatus(Status.valueOf(status));
         recruitmentRequest.setResponse(responseRepository.save(response));
         recruitmentRequestRepository.save(recruitmentRequest);
         return recruitmentRequest;
