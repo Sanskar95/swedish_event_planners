@@ -7,6 +7,7 @@ import com.kth.sep.exception.FinancialRequestNotFoundException;
 import com.kth.sep.service.FinancialRequestService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -20,6 +21,7 @@ public class FinancialRequestController {
         this.financialRequestService = financialRequestService;
     }
 
+    @RolesAllowed({"ADMIN"})
     @GetMapping("get_all")
     public List<FinancialRequest> getAllFinancialRequests(){
         return financialRequestService.getAllFinncialRequests();
