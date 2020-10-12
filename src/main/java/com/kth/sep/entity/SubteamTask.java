@@ -21,7 +21,7 @@ public class SubteamTask {
 
     private String subteamContactName;
     private String description;
-    private SubteamDepartment departmemt;
+    private SubteamDepartment department;
     private Status status;
     private Priority priority;
     private String projectReference;
@@ -72,12 +72,12 @@ public class SubteamTask {
         this.priority = priority;
     }
 
-    public SubteamDepartment getDepartmemt() {
-        return departmemt;
+    public SubteamDepartment getDepartment() {
+        return department;
     }
 
-    public void setDepartmemt(SubteamDepartment departmemt) {
-        this.departmemt = departmemt;
+    public void setDepartment(SubteamDepartment department) {
+        this.department = department;
     }
 
     public Response getResponse() {
