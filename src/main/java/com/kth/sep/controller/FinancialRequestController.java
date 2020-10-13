@@ -21,7 +21,7 @@ public class FinancialRequestController {
         this.financialRequestService = financialRequestService;
     }
 
-    @RolesAllowed({"ADMIN"})
+//    @RolesAllowed({"ADMIN"})
     @GetMapping("get_all")
     public List<FinancialRequest> getAllFinancialRequests(){
         return financialRequestService.getAllFinncialRequests();
