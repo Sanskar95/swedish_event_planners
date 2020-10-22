@@ -83,7 +83,7 @@ public class EventPlanningServiceTest {
     eventPlanningRequest1.setEventName("Some event");
     eventPlanningRequest1.setId(1);
     eventPlanningRequest1.setApprovedBySeniorCustomerServiceOfficer(true);
-    when(eventPlaningRequestRepository.save(eventPlanningRequest1)).thenReturn(eventPlanningRequest1);
+    when(eventPlaningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
 
     when(eventPlaningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
     EventPlanningRequest eventPlanningRequest2 = eventPlanningService.scsoApprove(1);
@@ -93,5 +93,65 @@ public class EventPlanningServiceTest {
 
 }
 
+@Test
+    public void testFMAction() throws EventPlanningRequestNotFoundException {
+        EventPlanningRequest eventPlanningRequest = new EventPlanningRequest();
+        eventPlanningRequest.setClientName("Some Client");
+        eventPlanningRequest.setEventName("Some event");
+        eventPlanningRequest.setId(1);
+
+        EventPlanningRequest eventPlanningRequest1 = new EventPlanningRequest();
+        eventPlanningRequest1.setClientName("Some Client");
+        eventPlanningRequest1.setEventName("Some event");
+        eventPlanningRequest1.setId(1);
+        eventPlanningRequest1.setFinalScsoApproval(true);
+        eventPlanningRequest.setFinancialManagerFeedback("feedback");
+        when(eventPlaningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
+
+        when(eventPlaningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
+        EventPlanningRequest eventPlanningRequest2 = eventPlanningService.financialManagerAction(1,"feedback");
+        Assert.assertEquals(eventPlanningRequest2.getFinancialManagerFeedback(), "feedback");
+
+    }
+
+    @Test
+    public void testAdminApprove() throws EventPlanningRequestNotFoundException {
+        EventPlanningRequest eventPlanningRequest = new EventPlanningRequest();
+        eventPlanningRequest.setClientName("Some Client");
+        eventPlanningRequest.setEventName("Some event");
+        eventPlanningRequest.setId(1);
+
+        EventPlanningRequest eventPlanningRequest1 = new EventPlanningRequest();
+        eventPlanningRequest1.setClientName("Some Client");
+        eventPlanningRequest1.setEventName("Some event");
+        eventPlanningRequest1.setId(1);
+        eventPlanningRequest1.setApprovedByAdminManager(true);
+        when(eventPlaningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
+
+        when(eventPlaningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
+        EventPlanningRequest eventPlanningRequest2 = eventPlanningService.adminApprove(1);
+        Assert.assertEquals(eventPlanningRequest2.getApprovedByAdminManager(), true);
+
+    }
+
+    @Test
+    public void testFinalScsoApprove() throws EventPlanningRequestNotFoundException {
+        EventPlanningRequest eventPlanningRequest = new EventPlanningRequest();
+        eventPlanningRequest.setClientName("Some Client");
+        eventPlanningRequest.setEventName("Some event");
+        eventPlanningRequest.setId(1);
+
+        EventPlanningRequest eventPlanningRequest1 = new EventPlanningRequest();
+        eventPlanningRequest1.setClientName("Some Client");
+        eventPlanningRequest1.setEventName("Some event");
+        eventPlanningRequest1.setId(1);
+        eventPlanningRequest1.setFinalScsoApproval(true);
+        when(eventPlaningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
+
+        when(eventPlaningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
+        EventPlanningRequest eventPlanningRequest2 = eventPlanningService.finalScsoApprove(1);
+        Assert.assertEquals(eventPlanningRequest2.getFinalScsoApproval(), true);
+
+    }
 
 }

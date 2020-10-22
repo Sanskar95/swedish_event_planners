@@ -34,9 +34,9 @@ public class EventPlanningService {
     }
 
     public EventPlanningRequest scsoApprove(Integer id) throws EventPlanningRequestNotFoundException {
-        EventPlanningRequest eventPlanningRequest = eventPlaningRequestRepository.findById(id).orElseThrow(() -> new EventPlanningRequestNotFoundException("The event has been removed"));
-        eventPlanningRequest.setApprovedBySeniorCustomerServiceOfficer(!eventPlanningRequest.getApprovedBySeniorCustomerServiceOfficer());
-        return eventPlaningRequestRepository.save(eventPlanningRequest);
+        EventPlanningRequest eventPlanningRequest1 = eventPlaningRequestRepository.findById(id).orElseThrow(() -> new EventPlanningRequestNotFoundException("The event has been removed"));
+        eventPlanningRequest1.setApprovedBySeniorCustomerServiceOfficer(!eventPlanningRequest1.getApprovedBySeniorCustomerServiceOfficer());
+        return eventPlaningRequestRepository.save(eventPlanningRequest1);
         //TODO: include false case as well
 
     }

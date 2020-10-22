@@ -35,8 +35,8 @@ public class RecruitmentRequestService {
         RecruitmentRequest recruitmentRequest = recruitmentRequestRepository.findById(id).orElseThrow(() -> new RecruitmentRequetNotFoundException("The request does not exist"));
         recruitmentRequest.setStatus(Status.valueOf(status));
         recruitmentRequest.setResponse(responseRepository.save(response));
-        recruitmentRequestRepository.save(recruitmentRequest);
-        return recruitmentRequest;
+        return recruitmentRequestRepository.save(recruitmentRequest);
+
 
     }
 

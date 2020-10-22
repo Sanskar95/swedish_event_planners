@@ -33,8 +33,8 @@ public class FinancialRequestService {
         FinancialRequest financialRequest = financialRequestRepository.findById(id).orElseThrow(() -> new FinancialRequestNotFoundException("The event has been removed"));
         financialRequest.setAgreedAmount(agreedAmount);
         financialRequest.setResponse(responseRepository.save(response));
-        financialRequestRepository.save(financialRequest);
-        return financialRequest;
+        return financialRequestRepository.save(financialRequest);
+
     }
 
     public FinancialRequest createFinancialRequest(FinancialRequest financialRequest) {
