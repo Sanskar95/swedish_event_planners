@@ -56,6 +56,12 @@ public class SepApplication {
 			user6.setUsername("subteam");
 			user6.setRole("SUBTEAM");
 
+			User user7= new User();
+			user6.setPassword("serviceManager");
+			user6.setUsername("serviceManager");
+			user6.setRole("SERVICE_MANAGER");
+			
+
 			users.add(user);
 			users.add(user1);
 			users.add(user2);
@@ -63,6 +69,7 @@ public class SepApplication {
 			users.add(user4);
 			users.add(user5);
 			users.add(user6);
+			users.add(user7);
 
 			userRepository.saveAll(users);
 		};
