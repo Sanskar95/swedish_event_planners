@@ -2,7 +2,7 @@ package com.kth.sep.service;
 
 import com.kth.sep.entity.EventPlanningRequest;
 import com.kth.sep.exception.EventPlanningRequestNotFoundException;
-import com.kth.sep.repository.EventPlaningRequestRepository;
+import com.kth.sep.repository.EventPlanningRequestRepository;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,7 +26,7 @@ public class EventPlanningServiceTest {
     EventPlanningService eventPlanningService;
 
     @Mock
-    EventPlaningRequestRepository eventPlaningRequestRepository;
+    EventPlanningRequestRepository eventPlanningRequestRepository;
 
     public MockitoRule rule = MockitoJUnit.rule().strictness(Strictness.LENIENT);
 
@@ -51,7 +51,7 @@ public class EventPlanningServiceTest {
 
         ArrayList<EventPlanningRequest> eventPlanningRequests = new ArrayList<>();
         eventPlanningRequests.add(eventPlanningRequest);
-        when(eventPlaningRequestRepository.findAll()).thenReturn(eventPlanningRequests);
+        when(eventPlanningRequestRepository.findAll()).thenReturn(eventPlanningRequests);
 
        List<EventPlanningRequest> eventPlanningRequests1 = eventPlanningService.getAllEventPlanningRequests();
         Assert.assertEquals(eventPlanningRequests1, eventPlanningRequests);
@@ -64,7 +64,7 @@ public class EventPlanningServiceTest {
         EventPlanningRequest eventPlanningRequest = new EventPlanningRequest();
     eventPlanningRequest.setClientName("Some Client");
     eventPlanningRequest.setEventName("Some event");
-    when(eventPlaningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
+    when(eventPlanningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
      EventPlanningRequest eventPlanningRequest1= eventPlanningService.createEventPlanningRequest(eventPlanningRequest);
      Assert.assertEquals(eventPlanningRequest1.getClientName(), eventPlanningRequest.getClientName());
 
@@ -83,9 +83,9 @@ public class EventPlanningServiceTest {
     eventPlanningRequest1.setEventName("Some event");
     eventPlanningRequest1.setId(1);
     eventPlanningRequest1.setApprovedBySeniorCustomerServiceOfficer(true);
-    when(eventPlaningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
+    when(eventPlanningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
 
-    when(eventPlaningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
+    when(eventPlanningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
     EventPlanningRequest eventPlanningRequest2 = eventPlanningService.scsoApprove(1);
     Assert.assertEquals(eventPlanningRequest2.getApprovedBySeniorCustomerServiceOfficer(), true);
 
@@ -106,9 +106,9 @@ public class EventPlanningServiceTest {
         eventPlanningRequest1.setId(1);
         eventPlanningRequest1.setFinalScsoApproval(true);
         eventPlanningRequest.setFinancialManagerFeedback("feedback");
-        when(eventPlaningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
+        when(eventPlanningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
 
-        when(eventPlaningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
+        when(eventPlanningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
         EventPlanningRequest eventPlanningRequest2 = eventPlanningService.financialManagerAction(1,"feedback");
         Assert.assertEquals(eventPlanningRequest2.getFinancialManagerFeedback(), "feedback");
 
@@ -126,9 +126,9 @@ public class EventPlanningServiceTest {
         eventPlanningRequest1.setEventName("Some event");
         eventPlanningRequest1.setId(1);
         eventPlanningRequest1.setApprovedByAdminManager(true);
-        when(eventPlaningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
+        when(eventPlanningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
 
-        when(eventPlaningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
+        when(eventPlanningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
         EventPlanningRequest eventPlanningRequest2 = eventPlanningService.adminApprove(1);
         Assert.assertEquals(eventPlanningRequest2.getApprovedByAdminManager(), true);
 
@@ -146,9 +146,9 @@ public class EventPlanningServiceTest {
         eventPlanningRequest1.setEventName("Some event");
         eventPlanningRequest1.setId(1);
         eventPlanningRequest1.setFinalScsoApproval(true);
-        when(eventPlaningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
+        when(eventPlanningRequestRepository.save(eventPlanningRequest)).thenReturn(eventPlanningRequest);
 
-        when(eventPlaningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
+        when(eventPlanningRequestRepository.findById(1)).thenReturn(java.util.Optional.of(eventPlanningRequest));
         EventPlanningRequest eventPlanningRequest2 = eventPlanningService.finalScsoApprove(1);
         Assert.assertEquals(eventPlanningRequest2.getFinalScsoApproval(), true);
 

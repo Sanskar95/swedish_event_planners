@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface EventPlaningRequestRepository extends CrudRepository<EventPlanningRequest,Integer> {
+public interface EventPlanningRequestRepository extends CrudRepository<EventPlanningRequest,Integer> {
     Optional<EventPlanningRequest> findById(Integer id);
 }
