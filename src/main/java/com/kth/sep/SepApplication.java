@@ -57,10 +57,10 @@ public class SepApplication {
 			user6.setRole("SUBTEAM");
 
 			User user7= new User();
-			user6.setPassword("serviceManager");
-			user6.setUsername("serviceManager");
-			user6.setRole("SERVICE_MANAGER");
-			
+			user7.setPassword("serviceManager");
+			user7.setUsername("serviceManager");
+			user7.setRole("SERVICE_MANAGER");
+
 
 			users.add(user);
 			users.add(user1);
