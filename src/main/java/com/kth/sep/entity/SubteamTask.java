@@ -26,8 +26,7 @@ public class SubteamTask {
     private Priority priority;
     private String projectReference;
 
-    @OneToOne
-    @JoinColumn(name="id")
+    @OneToOne(targetEntity=Response.class,cascade=CascadeType.ALL)
     private Response response;
 
 

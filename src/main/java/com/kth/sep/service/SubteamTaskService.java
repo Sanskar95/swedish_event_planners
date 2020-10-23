@@ -35,8 +35,9 @@ public class SubteamTaskService {
     public SubteamTask modifySubteamTask(Integer id, String status , Response response) throws SubteamTaskNotFoundException {
         SubteamTask subteamTask = subteamTaskRepository.findById(id).orElseThrow(() -> new SubteamTaskNotFoundException("Task not found"));
         subteamTask.setStatus(Status.valueOf(status));
-        subteamTask.setResponse(responseRepository.save(response));
-        return subteamTask;
+        responseRepository.save(response);
+        subteamTask.setResponse(response);
+        return subteamTaskRepository.save(subteamTask);
     }
 
     public SubteamTask createSubteamTask(SubteamTask subteamTask) {

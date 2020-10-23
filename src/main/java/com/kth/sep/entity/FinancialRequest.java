@@ -26,8 +26,7 @@ public class FinancialRequest implements Serializable {
         this.agreedAmount = this.requestedAmount;
     }
 
-    @OneToOne
-    @JoinColumn(name="id")
+    @OneToOne(targetEntity=Response.class,cascade=CascadeType.ALL)
     private Response response;
 
     private String reason;

@@ -25,8 +25,7 @@ public class RecruitmentRequest {
     private Status status;
     private String jobDescription;
 
-    @OneToOne
-    @JoinColumn(name="id")
+    @OneToOne(targetEntity=Response.class,cascade=CascadeType.ALL)
     private Response response;
 
     public String getContractType() {
